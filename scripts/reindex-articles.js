@@ -11,12 +11,13 @@ const matter = require('gray-matter')
 const jsonfile = require('jsonfile')
 const mkdirp = require('mkdirp-promise')
 const progress = require('cli-progress')
+const mkdirp = require('mkdirp-promise')
 
 const progressBar1 = new progress.Bar({}, progress.Presets.shades_classic)
 const progressBar2 = new progress.Bar({}, progress.Presets.shades_classic)
 
 async function main() {
-  const asideFiles = await glob(`${__dirname}/../asides/**`)
+  const asideFiles = await glob(`${process.cwd()}/asides/**`)
   const asideFilesByBasename = {}
   progressBar1.start(asideFiles.length, 0)
   for (asideFile of asideFiles) {
@@ -30,7 +31,7 @@ async function main() {
   }
   progressBar1.stop()
 
-  const articleFiles = await glob(`${__dirname}/../articles/**`)
+  const articleFiles = await glob(`${process.cwd()}/articles/**`)
   progressBar2.start(articleFiles.length, 0)
   const articleMetaData = []
   const allArticleHeadings = []
@@ -88,9 +89,9 @@ async function main() {
         })
     )
 
-    await mkdirp(path.join(__dirname, '..', 'public', 'articles'))
+    await mkdirp(path.join(process.cwd(), 'public', 'articles'))
     const _file = path.join(
-      __dirname,
+      process.cwd(),
       '..',
       'public',
       'articles',
@@ -113,13 +114,24 @@ async function main() {
 
   progressBar2.stop()
 
-  const _file = path.join(__dirname, '..', 'public', 'articles.json')
+  await mkdirp(path.join(process.cwd(), 'public'))
+  const _file = path.join(process.cwd(), 'public', 'articles.json')
   jsonfile.writeFileSync(_file, articleMetaData)
 
-  const _file2 = path.join(__dirname, '..', 'public', 'article-headings.json')
+  const _file2 = path.join(
+    process.cwd(),
+    '..',
+    'public',
+    'article-headings.json'
+  )
   jsonfile.writeFileSync(_file2, allArticleHeadings)
 
-  const _file3 = path.join(__dirname, '..', 'public', 'article-aliases.json')
+  const _file3 = path.join(
+    process.cwd(),
+    '..',
+    'public',
+    'article-aliases.json'
+  )
   jsonfile.writeFileSync(_file3, allArticleAliases)
 }
 

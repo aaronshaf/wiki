@@ -2,6 +2,9 @@
   "name": "wiki",
   "version": "0.1.0",
   "private": true,
+  "bin": {
+    "build-wiki": "./scripts/run-all.js"
+  },
   "dependencies": {
     "axios": "^0.17.1",
     "babel-polyfill": "^6.26.0",
@@ -23,6 +26,7 @@
     "mdast-util-toc": "^2.0.1",
     "mkdirp": "^0.5.1",
     "mkdirp-promise": "^5.0.1",
+    "ncp": "^2.0.0",
     "parse-link-header": "^1.0.1",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
@@ -36,6 +40,7 @@
     "request": "^2.83.0",
     "request-promise-native": "^1.0.5",
     "serve-static": "^1.13.1",
+    "shelljs": "^0.7.8",
     "shuffle": "^0.2.2",
     "sitemap": "^1.13.0",
     "sleep-promise": "^2.0.0",

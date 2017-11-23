@@ -3,14 +3,13 @@ const fs = require('fs')
 const glob = require('glob-promise')
 
 const assetManifest = require(path.join(
-  __dirname,
-  '..',
+  process.cwd(),
   'build',
   'asset-manifest.json'
 ))
 
 async function main() {
-  const articleFiles = await glob(`${__dirname}/../articles/**`)
+  const articleFiles = await glob(path.join(process.cwd(), 'articles', '**'))
   const articlesNames = articleFiles
     .filter(articleFile => fs.lstatSync(articleFile).isFile())
     .map(articleFile => path.basename(articleFile, '.md'))
@@ -33,10 +32,12 @@ async function main() {
       )
       .join('')
 
-  fs.writeFileSync(path.join(__dirname, '..', 'build', '_headers'), toml)
+  fs.writeFileSync(path.join(process.cwd(), 'build', '_headers'), toml)
 }
 
-main().catch(error => {
-  console.log(error)
-  process.exit(1)
-})
+const isParent = module.parent == null
+if (isParent) {
+  main()
+} else {
+  module.exports = main
+}

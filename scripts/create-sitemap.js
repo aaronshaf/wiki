@@ -15,11 +15,11 @@ async function main() {
       changefreq: 'weekly',
       priority: 0.8,
       lastmodrealtime: true,
-      lastmodfile: path.join(__dirname, '..', 'articles/main-page.md')
+      lastmodfile: path.join(process.cwd(), 'articles', 'main-page.md')
     }
   ]
 
-  const articleFiles = await glob(`${__dirname}/../articles/**`)
+  const articleFiles = await glob(path.join(process.cwd(), 'article', '**'))
   for (articleFile of articleFiles) {
     const fileStats = fs.lstatSync(articleFile)
     if (fileStats.isFile() === false) {
@@ -40,13 +40,16 @@ async function main() {
     cacheTime: ONE_DAY,
     urls
   })
+
   fs.writeFileSync(
-    path.join(__dirname, '..', 'public', 'sitemap.xml'),
+    path.join(process.cwd(), 'public', 'sitemap.xml'),
     sitemap.toString()
   )
 }
 
-main().catch(error => {
-  console.log(error)
-  process.exit(1)
-})
+const isParent = module.parent == null
+if (isParent) {
+  main()
+} else {
+  module.exports = main
+}

@@ -1,10 +1,14 @@
 const path = require('path')
 const fs = require('fs')
 
-const articles = require('../public/articles.json')
-const aliases = require('../public/article-aliases.json')
-
 async function main() {
+  const articles = require(path.join(process.cwd(), 'public', 'articles.json'))
+  const aliases = require(path.join(
+    process.cwd(),
+    'public',
+    'article-aliases.json'
+  ))
+
   const articleRedirectText = articles
     .map(([path, title]) => `/${path} /index.html 200`)
     .join('\n')
@@ -15,7 +19,7 @@ async function main() {
     .join('\n')
 
   fs.writeFileSync(
-    path.join(__dirname, '..', 'build', '_redirects'),
+    path.join(process.cwd(), 'build', '_redirects'),
     `/    /index.html   200
 
 ${articleRedirectText}
@@ -28,7 +32,9 @@ ${aliasRedirectText}
   )
 }
 
-main().catch(error => {
-  console.log(error)
-  process.exit(1)
-})
+const isParent = module.parent == null
+if (isParent) {
+  main()
+} else {
+  module.exports = main
+}

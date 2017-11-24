@@ -10,8 +10,8 @@ const createHeaders = require('./create-headers')
 const createRedirects = require('./create-redirects')
 
 async function build() {
-  console.log('(1) Copying public/ and /src...')
-  await copyFiles()
+  // console.log('(1) Copying public/ and /src...')
+  // await copyFiles()
 
   console.log('(2) Creating sitemap...')
   await createSitemap()

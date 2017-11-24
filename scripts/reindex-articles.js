@@ -90,13 +90,7 @@ async function main() {
     )
 
     await mkdirp(path.join(process.cwd(), 'public', 'articles'))
-    const _file = path.join(
-      process.cwd(),
-      '..',
-      'public',
-      'articles',
-      `${name}.json`
-    )
+    const _file = path.join(process.cwd(), 'public', 'articles', `${name}.json`)
     jsonfile.writeFileSync(
       _file,
       {
@@ -118,27 +112,12 @@ async function main() {
   const _file = path.join(process.cwd(), 'public', 'articles.json')
   jsonfile.writeFileSync(_file, articleMetaData)
 
-  const _file2 = path.join(
-    process.cwd(),
-    '..',
-    'public',
-    'article-headings.json'
-  )
+  const _file2 = path.join(process.cwd(), 'public', 'article-headings.json')
   jsonfile.writeFileSync(_file2, allArticleHeadings)
 
-  const _file3 = path.join(
-    process.cwd(),
-    '..',
-    'public',
-    'article-aliases.json'
-  )
+  const _file3 = path.join(process.cwd(), 'public', 'article-aliases.json')
   jsonfile.writeFileSync(_file3, allArticleAliases)
 }
-
-main().catch(error => {
-  console.log(error)
-  process.exit(1)
-})
 
 async function getAside(file) {
   const fileContent = fs.readFileSync(file, { encoding: 'utf8' })
@@ -156,4 +135,11 @@ async function getAside(file) {
       })
   })
   return html
+}
+
+const isParent = module.parent == null
+if (isParent) {
+  main()
+} else {
+  module.exports = main
 }

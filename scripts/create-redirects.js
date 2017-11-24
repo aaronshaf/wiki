@@ -2,12 +2,19 @@ const path = require('path')
 const fs = require('fs')
 
 async function main() {
-  const articles = require(path.join(process.cwd(), 'public', 'articles.json'))
-  const aliases = require(path.join(
-    process.cwd(),
-    'public',
-    'article-aliases.json'
-  ))
+  const articles = JSON.parse(
+    fs.readFileSync(path.join(process.cwd(), 'public', 'articles.json'), {
+      encoding: 'utf8'
+    })
+  )
+  const aliases = JSON.parse(
+    fs.readFileSync(
+      path.join(process.cwd(), 'public', 'article-aliases.json'),
+      {
+        encoding: 'utf8'
+      }
+    )
+  )
 
   const articleRedirectText = articles
     .map(([path, title]) => `/${path} /index.html 200`)

@@ -27,7 +27,7 @@ async function build() {
     )} build`
   )
 
-  // await sleep(2000)
+  await sleep(3000)
 
   console.log('(4) Creating headers...')
   await createHeaders()

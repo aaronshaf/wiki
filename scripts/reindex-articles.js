@@ -11,7 +11,6 @@ const matter = require('gray-matter')
 const jsonfile = require('jsonfile')
 const mkdirp = require('mkdirp-promise')
 const progress = require('cli-progress')
-const mkdirp = require('mkdirp-promise')
 
 const progressBar1 = new progress.Bar({}, progress.Presets.shades_classic)
 const progressBar2 = new progress.Bar({}, progress.Presets.shades_classic)

@@ -42,9 +42,9 @@ async function build() {
 }
 
 try {
-  if (argv._ && argv._[0] === 'build') {
-    build()
-  }
+  // if (argv._ && argv._[0] === 'build') {
+  build()
+  // }
 } catch (error) {
   console.error(error)
 }

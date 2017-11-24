@@ -1,6 +1,6 @@
 {
-  "name": "wiki",
-  "version": "0.1.0",
+  "name": "sift-wiki",
+  "version": "1.0.0",
   "private": true,
   "bin": {
     "wiki": "./scripts/index.js"

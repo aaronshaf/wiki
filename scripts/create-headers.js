@@ -2,13 +2,13 @@ const path = require('path')
 const fs = require('fs')
 const glob = require('glob-promise')
 
-const assetManifest = require(path.join(
-  process.cwd(),
-  'build',
-  'asset-manifest.json'
-))
-
 async function main() {
+  const assetManifest = require(path.join(
+    process.cwd(),
+    'build',
+    'asset-manifest.json'
+  ))
+
   const articleFiles = await glob(path.join(process.cwd(), 'articles', '**'))
   const articlesNames = articleFiles
     .filter(articleFile => fs.lstatSync(articleFile).isFile())

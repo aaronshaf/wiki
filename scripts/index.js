@@ -23,8 +23,8 @@ async function build() {
   console.log('(3) Generating main assets...')
   shell.exec(
     `${path.join(
-      __dirname,
-      '..',
+      // __dirname,
+      // '..',
       'node_modules',
       '.bin',
       'react-scripts'

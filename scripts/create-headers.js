@@ -3,11 +3,11 @@ const fs = require('fs')
 const glob = require('glob-promise')
 
 async function main() {
-  const assetManifest = require(path.join(
-    process.cwd(),
-    'build',
-    'asset-manifest.json'
-  ))
+  const _fileContent = fs.readFileSync(
+    path.join(process.cwd(), 'build', 'asset-manifest.json'),
+    { encoding: 'utf8' }
+  )
+  const assetManifest = JSON.parse(_fileContent)
 
   const articleFiles = await glob(path.join(process.cwd(), 'articles', '**'))
   const articlesNames = articleFiles

@@ -2,6 +2,7 @@
 const shell = require('shelljs')
 const path = require('path')
 const argv = require('minimist')(process.argv.slice(2))
+const sleep = require('sleep-promise')
 
 const copyFiles = require('./copy-app-files')
 const createSitemap = require('./create-sitemap')
@@ -25,6 +26,8 @@ async function build() {
       'react-scripts'
     )} build`
   )
+
+  await sleep(2000)
 
   console.log('(4) Creating headers...')
   await createHeaders()

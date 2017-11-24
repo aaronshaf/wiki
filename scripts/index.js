@@ -11,6 +11,7 @@ const createRedirects = require('./create-redirects')
 const reindexArticles = require('./reindex-articles')
 
 async function build() {
+  // Reintroduce when `build wiki` command is used
   // console.log('(1) Copying public/ and /src...')
   // await copyFiles()
 
@@ -21,17 +22,9 @@ async function build() {
   await createSitemap()
 
   console.log('(3) Generating main assets...')
-  shell.exec(
-    `${path.join(
-      // __dirname,
-      // '..',
-      'node_modules',
-      '.bin',
-      'react-scripts'
-    )} build`
-  )
+  shell.exec(`${path.join('node_modules', '.bin', 'react-scripts')} build`)
 
-  await sleep(3000)
+  await sleep(1000)
 
   console.log('(4) Creating headers...')
   await createHeaders()

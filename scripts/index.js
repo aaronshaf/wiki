@@ -27,10 +27,12 @@ async function build() {
     )} build`
   )
 
-  await sleep(3000)
+  await sleep(4000)
 
   console.log('(4) Creating headers...')
   await createHeaders()
+
+  await sleep(1000)
 
   console.log('(5) Creating redirects...')
   await createRedirects()

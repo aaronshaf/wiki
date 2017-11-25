@@ -2,9 +2,6 @@
   "name": "sift-wiki",
   "version": "1.0.0",
   "private": true,
-  "bin": {
-    "wiki": "./scripts/index.js"
-  },
   "dependencies": {
     "axios": "^0.17.1",
     "babel-polyfill": "^6.26.0",
@@ -50,7 +47,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "./scripts/run-all.sh",
+    "build": "node scripts/index.js",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },

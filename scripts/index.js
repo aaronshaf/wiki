@@ -8,15 +8,15 @@ const copyFiles = require('./copy-app-files')
 const createSitemap = require('./create-sitemap')
 const createHeaders = require('./create-headers')
 const createRedirects = require('./create-redirects')
-const reindexArticles = require('./reindex-articles')
+const indexArticles = require('./reindex-articles')
 
 async function build() {
   // Reintroduce when `build wiki` command is used
   // console.log('(1) Copying public/ and /src...')
   // await copyFiles()
 
-  console.log('(1) Copying public/ and /src...')
-  await reindexArticles()
+  console.log('(1) Indexing articles and asides...')
+  await indexArticles()
 
   console.log('(2) Creating sitemap...')
   await createSitemap()

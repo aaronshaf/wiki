@@ -89,6 +89,11 @@ class Article extends React.PureComponent {
 
   loadPage2 = async articlePath => {
     const article = await getArticle(articlePath)
+    const updatedArticlePath =
+      this.props.match.params.articlePath || 'main-page'
+    if (updatedArticlePath !== articlePath) {
+      return
+    }
     if (article == null) {
       this.notFound()
     } else {

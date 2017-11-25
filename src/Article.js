@@ -27,11 +27,26 @@ class Article extends React.PureComponent {
     if (pathChanged) {
       this.loadPage(this.props)
     }
+    this.updateActiveLinks()
+  }
+
+  updateActiveLinks() {
+    const links = Array.from(document.querySelectorAll('.article-inner a'))
+    links.forEach(a => {
+      const isLinkActive =
+        a.getAttribute('href') === this.props.match.params.articlePath
+      if (isLinkActive) {
+        a.classList.add('active')
+      } else {
+        a.classList.remove('active')
+      }
+    })
   }
 
   componentDidMount() {
     this.loadPage(this.props)
     this.div.addEventListener('pointerdown', this.handlePreload)
+    this.updateActiveLinks()
   }
 
   componentWillUnmount() {

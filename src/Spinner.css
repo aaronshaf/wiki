@@ -1,9 +1,9 @@
 .spinner {
   -webkit-animation: rotator 1.4s linear infinite;
-  animation: rotator 1.4s linear infinite;
+  animation: rotator 1.4s linear infinite, slowAppear 0.5s linear;
 }
 
-@-webkit-keyframes rotator {
+/*@-webkit-keyframes rotator {
   0% {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
@@ -12,7 +12,7 @@
     -webkit-transform: rotate(270deg);
     transform: rotate(270deg);
   }
-}
+}*/
 
 @keyframes rotator {
   0% {
@@ -24,6 +24,19 @@
     transform: rotate(270deg);
   }
 }
+
+@keyframes slowAppear {
+  0% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .path {
   stroke-dasharray: 187;
   stroke-dashoffset: 0;

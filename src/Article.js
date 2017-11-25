@@ -13,11 +13,26 @@ const ArticleLoaded = 'ArticleLoaded'
 class Article extends React.PureComponent {
   constructor(props, context) {
     super(props, context)
-    this.state = {
-      asides: [],
-      status: ArticleLoading,
-      html: '',
-      title: ''
+
+    const isCurrentArticlePreloaded =
+      window.WIKI_PRELOAD &&
+      window.WIKI_PRELOAD.articlePath &&
+      this.props.match.params.articlePath === window.WIKI_PRELOAD.articlePath
+    if (isCurrentArticlePreloaded) {
+      const article = window.WIKI_PRELOAD.json
+      this.state = {
+        asides: article.asides,
+        html: article.html,
+        title: article.title,
+        status: ArticleLoaded
+      }
+    } else {
+      this.state = {
+        asides: [],
+        status: ArticleLoading,
+        html: '',
+        title: ''
+      }
     }
   }
 
@@ -284,7 +299,7 @@ class Article extends React.PureComponent {
         ))
 
         return (
-          <div className="article" id="article">
+          <div className="article" id="article" ref={this.setDivRef}>
             <ScrollToTopOnMount />
             <Helmet>
               <title>{fullTitle}</title>

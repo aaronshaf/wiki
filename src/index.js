@@ -11,11 +11,12 @@ function main() {
         .getElementsByClassName('article-content-inner')
         .item(0).innerHTML =
         json.html
-      document
-        .getElementsByClassName('article-primary-asides')
-        .item(0).innerHTML = json.asides
+      const asidesHtml = json.asides
         .map(aside => `<aside class="aside">${aside}</aside>`)
         .join('')
+      document
+        .getElementsByClassName('article-primary-asides')
+        .item(0).innerHTML = asidesHtml
       window.WIKI_PRELOAD = {
         articlePath,
         json

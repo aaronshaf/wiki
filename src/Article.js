@@ -243,6 +243,7 @@ class Article extends React.PureComponent {
             key={index}
           />
         ))
+        console.log('ArticleLoading')
         return (
           <div className="article" id="article" ref={this.setDivRef}>
             <Helmet>

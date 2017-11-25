@@ -36,3 +36,7 @@ articles.tgz
 _headers
 # _redirects
 remove-links.js
+articles
+asides
+.env
+.nvmrc

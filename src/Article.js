@@ -18,6 +18,7 @@ class Article extends React.PureComponent {
       window.WIKI_PRELOAD &&
       window.WIKI_PRELOAD.articlePath &&
       this.props.match.params.articlePath === window.WIKI_PRELOAD.articlePath
+    console.log({ isCurrentArticlePreloaded })
     if (isCurrentArticlePreloaded) {
       const article = window.WIKI_PRELOAD.json
       this.state = {

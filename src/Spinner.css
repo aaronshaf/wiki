@@ -1,6 +1,6 @@
 .spinner {
   -webkit-animation: rotator 1.4s linear infinite;
-  animation: rotator 1.4s linear infinite, slowAppear 0.5s linear;
+  animation: rotator 1.4s linear infinite, slowAppear 1s linear;
 }
 
 /*@-webkit-keyframes rotator {
@@ -29,7 +29,7 @@
   0% {
     opacity: 0;
   }
-  90% {
+  60% {
     opacity: 0;
   }
   100% {

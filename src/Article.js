@@ -14,11 +14,11 @@ class Article extends React.PureComponent {
   constructor(props, context) {
     super(props, context)
 
+    const articlePath = props.match.params.articlePath || 'main-page'
     const isCurrentArticlePreloaded =
       window.WIKI_PRELOAD &&
       window.WIKI_PRELOAD.articlePath &&
-      this.props.match.params.articlePath === window.WIKI_PRELOAD.articlePath
-    console.log({ isCurrentArticlePreloaded })
+      articlePath === window.WIKI_PRELOAD.articlePath
     if (isCurrentArticlePreloaded) {
       const article = window.WIKI_PRELOAD.json
       this.state = {

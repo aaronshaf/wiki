@@ -6,6 +6,7 @@ import Article from './Article'
 import Sitemap from './Sitemap'
 import PrimaryNav from './PrimaryNav'
 import Data from './Data'
+import KeyListener from './KeyListener'
 import './App.css'
 
 class App extends Component {
@@ -43,6 +44,7 @@ class App extends Component {
               </Helmet>
               <div className="app-inner">
                 <Route path="/:articlePath?" component={PrimaryNav} />
+                <KeyListener articleTitlesByPath={articleTitlesByPath} />
                 <main className="app-container">
                   <ErrorBoundary>
                     <Switch>

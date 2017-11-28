@@ -252,7 +252,13 @@
     <div id="root">
       <div class="app">
         <div class="app-inner">
-          <nav class="PrimaryNav primary-header navbar app-navbar"><a class="navbar-brand" href="/">%REACT_APP_SITE_TITLE%</a></nav>
+          <nav class="PrimaryNav primary-header navbar app-navbar">
+            <a class="navbar-brand" href="/">%REACT_APP_SITE_TITLE%</a>
+            <form action="https://www.google.com/search">
+              <input type="hidden" name="sitesearch" value="https://www.theopedia.com">
+              <input type="search" class="Navbar-search-input" name="q" placeholder="Search" />
+            </form>
+          </nav>
           <main class="app-container">
             <div class="article" id="article">
               <div class="article-inner">

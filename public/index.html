@@ -27,15 +27,17 @@
       align-items: center;
       justify-content: space-between;
     }
-    .navbar {
-      position: relative;
+    .PrimaryNav {
+      height: 68px;
     }
-    .navbar-brand {
-      float: left;
+    .PrimaryNav--first-column {
+      display: flex;
+
+    }
+    .PrimaryNav-site-title {
       font-size: 1.25rem;
       line-height: inherit;
-      /*margin-right: 32px;*/
-      padding: 1.2rem;
+      margin-left: 24px;
     }
     .navbar-nav .nav-link {
       margin-right: 12px;
@@ -202,26 +204,41 @@
       -moz-appearance: none;
       -webkit-appearance: none;
       appearance: none;
-      padding: 8px 12px;
-      border: 2px solid #F6F6F6;
-      background-color: #F6F6F6;
+      padding: 12px 12px 12px 46px;
+      border: 1px solid #F6F6F6;
       font-size: 1rem;
       width: 100%;
-      margin-right: 8px;
-      border-radius: 2px;
+      border-radius: 3px;
+      background: url("img/search-icon.svg") no-repeat;
+      background-size: 16px 16px;
+      background-color: #F6F6F6;
+      background-position: 18px center;
     }
-    input.Navbar-search-input[type="search"]:hover,
-    input.Navbar-search-input[type="search"]:focus {
-      border-color: #EBEBEB;
-      background-color: #EEE;
+    input.Navbar-search-input[type="search"]::-webkit-input-placeholder {
+      color: #B3B3B3;
     }
+
+    input.Navbar-search-input[type="search"]::-moz-placeholder {
+      color: #B3B3B3;
+    }
+
+    input.Navbar-search-input[type="search"]:-ms-input-placeholder {
+      color: #B3B3B3;
+    }
+
+    input.Navbar-search-input[type="search"]:-moz-placeholder {
+      color: #B3B3B3;
+    }
+
     input.Navbar-search-input[type="search"]:focus {
+      background-color: white ;
       border-color: #8FBBF4;
       outline: none;
     }
     @media (max-width: 999px) {
       input.Navbar-search-input[type="search"] {
         width: 200px;
+        margin-right: 20px;
       }
     }
     @media (min-width: 1000px) {
@@ -253,7 +270,7 @@
       <div class="app">
         <div class="app-inner">
           <nav class="PrimaryNav primary-header navbar app-navbar">
-            <a class="navbar-brand" href="/">%REACT_APP_SITE_TITLE%</a>
+            <a class="PrimaryNav-site-title" href="/">%REACT_APP_SITE_TITLE%</a>
             <form action="https://www.google.com/search">
               <input type="hidden" name="sitesearch" value="https://www.theopedia.com">
               <input type="search" class="Navbar-search-input" name="q" placeholder="Search" />

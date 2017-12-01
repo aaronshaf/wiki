@@ -28,10 +28,12 @@ class PrimaryNav extends React.Component {
 
   render() {
     return (
-      <nav className="PrimaryNav primary-header navbar app-navbar">
-        <Link className="navbar-brand" to="/">
-          {process.env.REACT_APP_SITE_TITLE || 'Untitled Site'}
-        </Link>
+      <nav className="PrimaryNav primary-header app-navbar">
+        <div className="PrimaryNav--first-column">
+          <Link className="PrimaryNav-site-title" to="/">
+            {process.env.REACT_APP_SITE_TITLE || 'Untitled Site'}
+          </Link>
+        </div>
         <form action="https://www.google.com/search">
           <input
             type="hidden"
